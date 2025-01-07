@@ -1252,9 +1252,13 @@ document.querySelectorAll('.list-item').forEach(item => {
     </div>
 
     <script>
-        if (!document.hasStorageAccess()) document.requestStorageAccess()
+        (async () => {
+            const access = await document.hasStorageAccess()
+            if (!access) await  document.requestStorageAccess()
 
-        console.log({access:document.hasStorageAccess()})
+            console.log({ access })
+        })()
+
     </script>
 </body>
     <style>
