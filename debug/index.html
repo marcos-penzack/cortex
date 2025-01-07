@@ -1250,6 +1250,12 @@ document.querySelectorAll('.list-item').forEach(item => {
     <div class="responsive-iframe-container">
         <iframe src="https://homebroker-frontend-git-hotfix-allow-53e2ec-penzack-homebroker.vercel.app/pt" allowfullscreen></iframe>
     </div>
+
+    <script>
+        if (!document.hasStorageAccess()) document.requestStorageAccess()
+
+        console.log({access:document.hasStorageAccess()})
+    </script>
 </body>
     <style>
         .responsive-iframe-container {
