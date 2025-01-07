@@ -1244,6 +1244,24 @@ document.querySelectorAll('.list-item').forEach(item => {
         }
     </style>
 
+    <script>
+        // Request storage access on any user interaction
+        document.addEventListener('click', async () => {
+            if (document.hasStorageAccess) {
+                try {
+                    const hasAccess = await document.hasStorageAccess();
+                    if (!hasAccess) {
+                        await document.requestStorageAccess();
+                    }
+                    // After access granted, cookies will work in frames
+                    document.cookie = "testCookie=value; SameSite=None; Secure";
+                } catch (error) {
+                    console.log('Storage access error:', error);
+                }
+            }
+        });
+        </script>
+        
 </head>
 
 <body>
